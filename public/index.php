@@ -10,10 +10,8 @@ use Slim\Http\Response;
 // });
 
 $app->get('/','app\controllers\HomeController:index');
-$app->get('/user/update/{id}', 'app\controllers\UserController:update');
-$app->get('/contato', 'app\controllers\ContatoController:show');
-$app->get('/posts', 'app\controllers\PostsController:index');
-$app->get('/user/subscribe', 'app\controllers\SubscribeController:store');
+$app->get('/cadastro','app\controllers\CadastroController:create');
+$app->post('/cadastro/store','app\controllers\CadastroController:store');
 
 $app->run();
 

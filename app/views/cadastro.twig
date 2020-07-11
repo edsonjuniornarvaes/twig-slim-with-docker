@@ -1,0 +1,21 @@
+{% extends "master.twig" %}
+
+{% block master %}
+    <h2>Cadastro - Sistema de validação</h2>
+    <hr>
+    <form action="/cadastro/store" method="post">
+        <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" name="name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">E-mail</label>
+            <input type="text" name="email" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Telefone</label>
+            <input type="text" name="phone" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+    </form>
+{% endblock %}
