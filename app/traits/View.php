@@ -34,7 +34,7 @@ trait View {
     protected function view($view, $data){
         $this->load();
 
-        $template = $this->twig->loadTemplate(str_replace('.', '/', $view).'.html');
+        $template = $this->twig->loadTemplate(str_replace('.', '/', $view).'.twig');
 
         return $template->display($data);
     }
