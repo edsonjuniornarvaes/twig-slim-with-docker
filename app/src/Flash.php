@@ -6,7 +6,7 @@ class Flash {
 
     public static function add($index, message) {
         if(!isset($_SESSION[$index])) {
-            $_SESSION[$index];
+            $_SESSION[$index] = $message;
         }
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use app\src\Flash;
+use app\src\Redirect;
 
 function dd($data) {
     print_r($data);
@@ -28,4 +29,10 @@ function error($message) {
 
 function success($message) {
     return "<span class='alert alert-success'>* {$message}</span>";
+}
+
+function back() {
+    Redirect::back();
+
+    die();
 }
