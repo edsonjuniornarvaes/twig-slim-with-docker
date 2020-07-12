@@ -16,10 +16,12 @@ class CadastroController extends Controller {
         $validate = new Validate;
 
         $data = $validate->validate([
-            'name' =>  'required:max@30',
+            'name' =>  'required',
             'email' =>  'required:email',
             'phone' =>  'required:phone',
         ]);
+
+        // $validate->errors();
 
         if($validate->hasErrors()) {
             return back();

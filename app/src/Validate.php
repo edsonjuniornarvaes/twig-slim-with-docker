@@ -14,7 +14,7 @@ class Validate {
                 $this->$validation($field);
             }
 
-            if($this->hasTwoOrMoreValidation($validation))   {
+            if($this->hasTwoOrMoreValidation($validation)) {
                 $validations = explode(':', $validation);
 
                 foreach ($validations as $validation) {

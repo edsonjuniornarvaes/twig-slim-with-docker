@@ -1,9 +1,9 @@
 <?php
 
-use app\sr\Flash;
+use app\src\Flash;
 
 $message = new \Twig_SimpleFunction('message', function($index){
-    echo Flash::($index);
+    echo Flash::get($index);
 });
 
 return [
