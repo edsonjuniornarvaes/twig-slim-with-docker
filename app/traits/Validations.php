@@ -4,13 +4,17 @@ namespace app\traits;
 
 trait Validations {
 
-    protected function required() {
+    private $errors = [];
 
+    protected function required($field) {
+        if(empty($_POST[$field])) {
+            $this->errors[$field][] = flashAdd($field, error('Esse campo é obrigatório'));
+        }
     }
 
-    protected function email() {
+    protected function email($field) {
 
-}
+    }
 
     protected function phone() {
 
