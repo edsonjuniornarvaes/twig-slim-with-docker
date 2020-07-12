@@ -12,7 +12,9 @@ class Model {
         $this->connect = Connection::connect();
     }
 
-    public function all() {
+    public function all() 
+    {
+
         $sql = "select * from {$this->table}";
         $all = $this->connect->query($sql);
         $all->execute();
