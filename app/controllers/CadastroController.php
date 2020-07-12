@@ -4,13 +4,15 @@ namespace app\Controllers;
 
 class CadastroController extends Controller {
 
-    public function create() {
+    public function create() 
+    {
         $this->view('cadastro', [
             'title' => 'Cadastro'
         ]);
     }
 
-    public function store() {
+    public function store() 
+    {
         $validate = new Validate;
 
         $data = $validate->validate([
