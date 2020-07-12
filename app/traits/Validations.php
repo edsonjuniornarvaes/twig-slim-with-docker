@@ -8,7 +8,7 @@ trait Validations {
 
     protected function required($field) {
         if(empty($_POST[$field])) {
-            $this->errors[$field][] = flashAdd($field, error('Esse campo é obrigatório'));
+            $this->errors[$field][] = flash($field, error('Esse campo é obrigatório'));
         }
     }
 
@@ -22,5 +22,9 @@ trait Validations {
 
     protected function unique() {
 
+    }
+
+    public function hasErrors() {
+        return !empty($this->errors);
     }
 }

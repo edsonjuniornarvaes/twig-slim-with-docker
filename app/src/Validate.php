@@ -14,7 +14,7 @@ class Validate {
                 $this->$validation($field);
             }
 
-            if($this->hasOneOrMoreValidation($validation))   {
+            if($this->hasTwoOrMoreValidation($validation))   {
                 $validations = explode(':', $validation);
 
                 foreach ($validations as $validation) {
@@ -28,7 +28,7 @@ class Validate {
         return substr_count($validate, ':') == 0;
     }
 
-    private function hasOneOrMoreValidation($validate) {
+    private function hasTwoOrMoreValidation($validate) {
         return substr_count($validate, ':') >= 1;
     }
 }
