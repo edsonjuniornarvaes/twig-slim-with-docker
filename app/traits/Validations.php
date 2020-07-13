@@ -24,7 +24,13 @@ trait Validations {
         }
     }
 
-    protected function unique() {
+    protected function unique($field, $model) {
+        
+
+    }
+
+    protected function max($field, $max) {
+
 
     }
 

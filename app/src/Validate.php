@@ -9,6 +9,8 @@ class Validate {
 
     public function validate($rules) {
         foreach ($rules as $field => $validation) {
+
+            $validation = $this->validationWithParameter($field, $validation);
             
             if($this->hasOneValidation($validation))   {
                 $this->$validation($field);
@@ -22,6 +24,27 @@ class Validate {
                 }
             }
         }
+    }
+
+    private function validationWithParameter($field, $validation) {
+
+        $validations = [];
+
+        if(substr_count($validation, '@') > 0) {
+            $validations = explode(':', $validation);
+        }
+
+        foreach ($validations as $key => $value) {
+            if(substr_count($value, '@') > 0) {
+                list($validationWithParameter, $parameter) = explode('@', $value);
+
+                $this->$validationWithParameter($field, $parameter);
+                unset($validations[$key]);
+                $validation = implode(':', $validations);
+            }
+        }
+
+        return $validation;
     }
 
     public function hasOneValidation($validate) {
