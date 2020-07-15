@@ -21,8 +21,6 @@ class CadastroController extends Controller {
             'phone' =>  'required:phone',
         ]);
 
-        // $validate->errors();
-
         if($validate->hasErrors()) {
             return back();
         }

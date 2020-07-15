@@ -26,12 +26,21 @@ trait Validations {
 
     protected function unique($field, $model) {
         
+        $model = "app\\models\\" . ucfirst($model);
 
+        $model = new $model();
+
+        $find = $model->find($field, $_POST[$field]);
+
+        if($find and !empty($_POST[$field])) {
+            $this->error[$field][] = flash($field, error('Esse valor ja esta cadastrado no banco de dados'))
+        }
     }
 
     protected function max($field, $max) {
-
-
+        if(strlen($_POST[$ield]) > $max) {
+            $this->error[$field][] = flash($field, error("O número de caracteres para ese campo não pode ser maior do que {$max}"));
+        }
     }
 
     public function hasErrors() {
