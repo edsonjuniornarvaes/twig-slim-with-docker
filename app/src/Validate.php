@@ -5,7 +5,7 @@ namespace app\src;
 use app\traits\Validations;
 
 class Validate {
-    use Validations;
+    use Validations, Sanitize;
 
     public function validate($rules) {
         foreach ($rules as $field => $validation) {
@@ -24,6 +24,9 @@ class Validate {
                 }
             }
         }
+
+        return (object) $this->sanitize();
+
     }
 
     private function validationWithParameter($field, $validation) {
