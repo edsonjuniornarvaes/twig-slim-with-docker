@@ -12,13 +12,14 @@ class Model {
         $this->connect = Connection::connect();
     }
 
-    public function all() {
+    public function all() 
+    {
         $sql = "select * from {$this->table}";
         $all = $this->connect->query($sql);
         $all->execute();
 
         return $all->fetchAll();
-    }
+    }   
 
     public function find($field, $value) {
         $sql = "select * from {$this->table} where {$field} = :{$field}";

@@ -2,6 +2,7 @@
 
 namespace app\src;
 
+use app\traits\Sanitize;
 use app\traits\Validations;
 
 class Validate {

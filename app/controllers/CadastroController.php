@@ -17,7 +17,7 @@ class CadastroController extends Controller {
 
         $data = $validate->validate([
             'name' =>  'required:max@5',
-            'email' =>  'required:email:unique@posts',
+            'email' =>  'required:email:unique@users',
             'phone' =>  'required:phone',
         ]);
 
