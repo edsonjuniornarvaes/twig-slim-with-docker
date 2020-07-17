@@ -28,7 +28,13 @@ function error($message) {
 }
 
 function success($message) {
-    return "<span class='alert alert-success'>* {$message}</span>";
+    return "<span class='alert alert-success'>{$message}</span>";
+}
+
+function redirect($target) {
+    Redirect::redirect($target);
+
+    die();
 }
 
 function back() {

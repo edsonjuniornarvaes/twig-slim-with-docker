@@ -3,6 +3,9 @@
 {% block master %}
     <h2>Cadastro - Sistema de validação</h2>
     <hr>
+
+    {{ message('message')}}
+
     <form action="/cadastro/store" method="post">
         <div class="form-group">
             <label for="">Name</label>

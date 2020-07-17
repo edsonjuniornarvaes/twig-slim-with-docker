@@ -38,7 +38,7 @@ trait Validations {
     }
 
     protected function max($field, $max) {
-        if(strlen($_POST[$ield]) > $max) {
+        if(strlen($_POST[$field]) > $max) {
             $this->error[$field][] = flash($field, error("O número de caracteres para ese campo não pode ser maior do que {$max}"));
         }
     }

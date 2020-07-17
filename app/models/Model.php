@@ -2,9 +2,12 @@
 
 namespace app\models;
 
+use app\traits\Create;
 use app\models\Connection;
 
 class Model {
+
+    use Create;
 
     protected $connect;
 
