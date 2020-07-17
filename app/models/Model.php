@@ -3,11 +3,13 @@
 namespace app\models;
 
 use app\traits\Create;
+use app\traits\Read;
 use app\models\Connection;
 
 class Model {
 
     use Create;
+    use Read;
 
     protected $connect;
 
