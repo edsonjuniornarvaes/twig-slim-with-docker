@@ -9,11 +9,9 @@ class HomeController extends Controller{
 
         $users = new Users;
         $users = $users->select()->get();
-
-        dd($users);
         
         $this->view('home', [
-            'nome' => 'Edson',
+            'users' => $users,
             'title' => 'Home'
         ]);
     }

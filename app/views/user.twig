@@ -7,20 +7,20 @@
 
     {{ message('message')}}
 
-    <form action="/cadastro/store" method="post">
+    <form action="/user/update/{{ user.id }}" method="post">
         <div class="form-group">
             <label for="">Name</label>
-            <input type="text" name="name" class="form-control">
+            <input type="text" name="name" class="form-control" value={{ user.name }}>
             {{ message('name') }}
         </div>
         <div class="form-group">
             <label for="">E-mail</label>
-            <input type="text" name="email" class="form-control">
+            <input type="text" name="email" class="form-control" value={{ user.email }}>
             {{ message('email') }}
         </div>
         <div class="form-groupp">
             <label for="">Telefone</label>
-            <input type="text" name="phone" class="form-control">
+            <input type="text" name="phone" class="form-control" value={{ user.phone }}>
             {{ message('phone') }}
         </div><hr>
         <button type="submit" class="btn btn-success">Cadastrar</button>

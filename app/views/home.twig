@@ -1,6 +1,24 @@
 {% extends "master.twig" %}
 
 {% block master %}
-    <h2>Home</h2>
-    <button id="btn_subscribe" class="btn btn-danger">Subscribe</button>
+    <hr>
+    <h2>User List</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Ações</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td><a href="/user/edit/{{ user.id }}" class="btn btn-success btn-sm">Editar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
