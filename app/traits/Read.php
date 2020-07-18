@@ -17,7 +17,7 @@ trait Read {
 
         $num_args = func_num_args();
         $args = func_get_args();
-        $args = $this->whereArgs($num_args, $args);
+        $args = $this->whereArgs($num_args,$args);
 
         $this->sql.= " where {$args['field']} {$args['sinal']} :{$args['field']}";
 
@@ -28,7 +28,7 @@ trait Read {
         return $this;
     }
 
-    public function whereArgs($num_args, $args) {
+    public function whereArgs($num_args,$args) {
 
         if($num_args < 2) {
             throw new \Exception("Opa, algo errado aconteceu, o where precisa de no mínimo 2 argumentos");
@@ -43,8 +43,8 @@ trait Read {
 
         if($num_args == 3) {
             $field = $args[0];
-            $sinal = $args[2];
-            $value = $args[1];
+            $sinal = $args[1];
+            $value = $args[2];
         }
 
         if($num_args > 3) {
@@ -66,13 +66,12 @@ trait Read {
 
     public function first() {
         $select = $this->bindAndExecute();
-        return $select->fetch($this->binds);
+        return $select->fetch();
     }
     
     private function bindAndExecute() {
         $select = $this->connect->prepare($this->sql);
-        $select->execute();
-
+        $select->execute($this->binds);
         return $select;
     }
 

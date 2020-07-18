@@ -8,7 +8,9 @@ class HomeController extends Controller{
     public function index(){
 
         $users = new Users;
-        $users = $users->select()->where('id', '=', 10)->get();
+        $users = $users->select()->get();
+
+        dd($users);
         
         $this->view('home', [
             'nome' => 'Edson',

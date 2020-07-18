@@ -30,16 +30,16 @@ trait Validations {
 
         $model = new $model();
 
-        $find = $model->select()->where($field, $_POST[$field]->first());
+        $find = $model->select()->where($field,$_POST[$field])->first();
 
         if($find and !empty($_POST[$field])) {
-            $this->error[$field][] = flash($field, error('Esse valor ja esta cadastrado no banco de dados'));
+            $this->errors[$field][] = flash($field, error('Esse valor ja esta cadastrado no banco de dados'));
         }
     }
 
     protected function max($field, $max) {
         if(strlen($_POST[$field]) > $max) {
-            $this->error[$field][] = flash($field, error("O número de caracteres para ese campo não pode ser maior do que {$max}"));
+            $this->errors[$field][] = flash($field, error("O número de caracteres para ese campo não pode ser maior do que {$max}"));
         }
     }
 

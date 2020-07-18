@@ -14,10 +14,10 @@ class CadastroController extends Controller {
     }
 
     public function store() {
+        
         $validate = new Validate;
-
         $data = $validate->validate([
-            'name' =>  'required:max@5',
+            'name' =>  'required',
             'email' =>  'required:email:unique@users',
             'phone' =>  'required:phone',
         ]);
