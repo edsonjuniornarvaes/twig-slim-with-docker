@@ -4,41 +4,42 @@ use app\src\Flash;
 use app\src\Redirect;
 
 function dd($data) {
-    print_r($data);
-    die();
+	print_r($data);
+
+	die();
 }
 
 function json($data) {
-    header('Content-Type: application/json');
+	header('Content-Type: application/json');
 
-    echo json_encode($data);
+	echo json_encode($data);
 }
 
 function path() {
-    $vendorDir = dirname(dirname(__FILE__));
-    return dirname($vendorDir);
+	$vendorDir = dirname(dirname(__FILE__));
+	return dirname($vendorDir);
 }
 
 function flash($index, $message) {
-    Flash::add($index, $message);
+	Flash::add($index, $message);
 }
 
 function error($message) {
-    return "<span class='alert alert-danger'>* {$message}</span>";
+	return "<span class='alert alert-danger'>* {$message}</span>";
 }
 
 function success($message) {
-    return "<span class='alert alert-success'>{$message}</span>";
+	return "<span class='alert alert-success'>{$message}</span>";
 }
 
 function redirect($target) {
-    Redirect::redirect($target);
+	Redirect::redirect($target);
 
-    die();
+	die();
 }
 
 function back() {
-    Redirect::back();
+	Redirect::back();
 
-    die();
+	die();
 }

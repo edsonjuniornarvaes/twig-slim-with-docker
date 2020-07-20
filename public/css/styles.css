@@ -1,3 +1,15 @@
 *{
-    font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.error{
+	border: solid 1px red;
+	padding: 5px;
+	color: red;
+}
+
+.success{
+	border: solid 1px green;
+	padding: 5px;
+	color: green;
 }

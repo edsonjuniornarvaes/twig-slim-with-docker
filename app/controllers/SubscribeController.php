@@ -1,9 +1,11 @@
 <?php
 
-namespace app\Controllers;
+namespace app\controllers;
 
 class SubscribeController {
-    public function store() {
-       echo json_encode('subscribe user') 
+
+    public function store(){
+        echo json_encode('subscribe user');
     }
+
 }

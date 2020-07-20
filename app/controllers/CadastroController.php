@@ -2,39 +2,41 @@
 
 namespace app\controllers;
 
-use app\src\Validate;
 use app\models\Users;
+use app\src\Validate;
 
 class CadastroController extends Controller {
 
-    public function create() {
-        $this->view('cadastro', [
-            'title' => 'Cadastro'
-        ]);
-    }
+	public function create() {
+		$this->view('cadastro', [
+			'title' => 'Cadastro',
+		]);
+	}
 
-    public function store() {
-        
-        $validate = new Validate;
-        $data = $validate->validate([
-            'name' =>  'required',
-            'email' =>  'required:email:unique@users',
-            'phone' =>  'required:phone',
-        ]);
+	public function store() {
 
-        if($validate->hasErrors()) {
-            return back();
-        }
+		$validate = new Validate;
 
-        $user = new Users;
-        $user = $user->create((array)$data);
+		$data = $validate->validate([
+			'name' => 'required',
+			'email' => 'required:email:unique@users',
+			'phone' => 'required:phone',
+		]);
 
-        if($user) {
-            flash('message', success('Cadastro com sucesso !'));
+		if ($validate->hasErrors()) {
+			return back();
+		}
 
-            return back();
-        }
-        
-    }
+		$user = new Users;
+		$user = $user->create((array)$data);
+
+		if($user){
+
+			flash('message',success('Cadastrado com sucesso !'));
+			return back();
+			
+		}
+
+	}
 
 }
