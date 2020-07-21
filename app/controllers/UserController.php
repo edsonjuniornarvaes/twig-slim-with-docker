@@ -43,7 +43,7 @@ class UserController extends Controller{
     $updated = $this->user->find('id',$args['id'])->update((array)$data);
 
     if($updated){
-        flash('message',success('Atualizado com sucessos !'));
+        flash('message',success('Atualizado com sucesso !'));
 
         return back();
     }
