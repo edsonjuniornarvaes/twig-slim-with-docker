@@ -16,7 +16,8 @@ class UserController extends Controller{
         $this->user = new Users;   
     }
 
-  public function edit($request,$response,$args){
+  public function edit($request,$response,$args)
+  {
 
     $user = $this->user->select()->where('id',$args['id'])->first();
 
@@ -26,7 +27,8 @@ class UserController extends Controller{
     ]);
   }
 
-  public function update($request,$response,$args){
+  public function update($request,$response,$args)
+  {
 
     $validate = new Validate;
 
@@ -42,7 +44,8 @@ class UserController extends Controller{
 
     $updated = $this->user->find('id',$args['id'])->update((array)$data);
 
-    if($updated){
+    if($updated)
+    {
         flash('message',success('Atualizado com sucesso !'));
 
         return back();
@@ -54,7 +57,8 @@ class UserController extends Controller{
 
   }
 
-  public function destroy($request,$response,$args){
+  public function destroy($request,$response,$args)
+  {
 
     $deleted = $this->user->destroy('id',$args['id']);
 
