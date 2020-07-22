@@ -4,7 +4,8 @@ namespace app\controllers;
 
 use app\models\Posts;
 
-class PostsController extends Controller{
+class PostsController extends Controller
+{
 
 	protected $post;
 
@@ -13,7 +14,8 @@ class PostsController extends Controller{
         $this->post = new Posts;
     }
 
-    public function index(){
+    public function index()
+    {
 
         $posts = $this->post->postsWithIdGreaterThan2();
 

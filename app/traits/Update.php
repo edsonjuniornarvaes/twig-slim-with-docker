@@ -2,9 +2,11 @@
 
 namespace app\traits;
 
-trait Update{
+trait Update
+{
 
-    public function update($attributes){
+    public function update($attributes)
+    {
         
         if(!isset($this->field) or !isset($this->value)){
             throw new \Exception("Antes de fazer o update, por favor chame o find");
@@ -17,9 +19,7 @@ trait Update{
         }
 
         $sql = rtrim($sql,',');
-
         $sql.= " where {$this->field} = :{$this->field}";
-
         $attributes['id'] = $this->value;
 
         $update = $this->connect->prepare($sql);

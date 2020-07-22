@@ -7,5 +7,5 @@ $message = new \Twig_SimpleFunction('message', function ($index) {
 });
 
 return [
-	$message,
+	$message
 ];

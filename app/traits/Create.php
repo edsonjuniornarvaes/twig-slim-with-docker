@@ -2,9 +2,11 @@
 
 namespace app\traits;
 
-trait Create{
+trait Create
+{
 
-    public function create($attributes){
+    public function create($attributes)
+    {
 
         $sql = "insert into {$this->table}(";
         $sql.= implode(',', array_keys($attributes)).') values(';

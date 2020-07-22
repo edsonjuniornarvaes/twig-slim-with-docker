@@ -2,9 +2,11 @@
 
 namespace app\src;
 
-class Load{
+class Load
+{
 
-    public static function file($file){
+    public static function file($file)
+    {
         $file = path().$file;
 
         if(!file_exists($file)){

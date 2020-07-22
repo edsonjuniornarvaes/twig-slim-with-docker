@@ -4,11 +4,13 @@ namespace app\src;
 use app\traits\Sanitize;
 use app\traits\Validations;
 
-class Validate {
+class Validate 
+{
 
 	use Validations, Sanitize;
 
-	public function validate($rules) {
+	public function validate($rules) 
+	{
 		foreach ($rules as $field => $validation) {
 
 			$validation = $this->validationWithParameter($field, $validation);
@@ -29,7 +31,8 @@ class Validate {
 		return (object) $this->sanitize();
 	}
 
-	private function validationWithParameter($field, $validation) {
+	private function validationWithParameter($field, $validation) 
+	{
 
 		$validations = [];
 
@@ -38,6 +41,7 @@ class Validate {
 		}
 
 		foreach ($validations as $key => $value) {
+
 			if (substr_count($value, '@') > 0) {
 
 				list($validationWithParameter, $parameter) = explode('@', $value);
@@ -53,11 +57,13 @@ class Validate {
 		return $validation;
 	}
 
-	private function hasOneValidation($validate) {
+	private function hasOneValidation($validate) 
+	{
 		return substr_count($validate, ':') == 0;
 	}
 
-	private function hasTwoOrMoreValidation($validate) {
+	private function hasTwoOrMoreValidation($validate) 
+	{
 		return substr_count($validate, ':') >= 1;
 	}
 

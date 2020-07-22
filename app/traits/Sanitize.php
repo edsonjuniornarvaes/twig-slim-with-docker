@@ -2,9 +2,11 @@
 
 namespace app\traits;
 
-trait Sanitize {
+trait Sanitize 
+{
 
-	protected function sanitize() {
+	protected function sanitize() 
+	{
 		$sanitized = [];
 
 		foreach ($_POST as $field => $value) {

@@ -4,10 +4,12 @@ namespace app\controllers;
 
 use app\models\Users;
 use app\src\Validate;
+
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class UserController extends Controller{
+class UserController extends Controller
+{
 
     private $user;
 
@@ -44,17 +46,13 @@ class UserController extends Controller{
 
     $updated = $this->user->find('id',$args['id'])->update((array)$data);
 
-    if($updated)
-    {
+    if($updated){
         flash('message',success('Atualizado com sucesso !'));
-
         return back();
     }
 
     flash('message',error('Erro ao atualizar !'));
-
     return back();
-
   }
 
   public function destroy($request,$response,$args)
