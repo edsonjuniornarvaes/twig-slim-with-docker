@@ -163,4 +163,9 @@ class Whoops
         $this->transmitExceptionCode = $option;
         return $this;
     }
+
+    public function register()
+    {
+        $this->whoops->register();
+    }
 }

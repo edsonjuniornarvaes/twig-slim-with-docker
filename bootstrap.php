@@ -4,20 +4,12 @@ session_start();
 
 require "vendor/autoload.php";
 
-use Dopesong\Slim\Error\Whoops as WhoopsError;
+use app\src\Whoops;
 use Slim\App;
 
-$config = [
-    'settings' => [
-        'displayErrorDetails' => true
-    ]
-];
+$config['displayErrorDetails'] = true;
 
+$app = new App(['settings' => $config]);
 
-$app = new App($config);
-
-$container = $app->getContainer();
-
-$container['phpErrorHandler'] = $container['errorHandler'] = function($c) {
-    return new WhoopsError();
-};
+$whoops = new Whoops;
+$whoops->run($app);
