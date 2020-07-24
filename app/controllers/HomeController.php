@@ -9,7 +9,6 @@ class HomeController extends Controller
 
 	public function index() 
 	{
-
 		$users = new Users;
 		$users = $users->select()->get();
 
