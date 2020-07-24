@@ -9,7 +9,7 @@ use app\traits\Update;
 
 use app\models\Connection;
 
-class Model 
+abstract class Model 
 {
 
 	use Create,Read,Update,Delete;

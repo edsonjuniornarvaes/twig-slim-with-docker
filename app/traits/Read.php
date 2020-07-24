@@ -2,11 +2,15 @@
 
 namespace app\traits;
 
+use app\models\Paginate;
+
 trait Read
 {
 
     private $sql;
     private $binds;
+    private $isPaginate = false;
+    private $paginate;
 
     public function select($fields = '*'){
        $this->sql = "select {$fields} from {$this->table}";
@@ -60,6 +64,17 @@ trait Read
         ];
     }
 
+    public function paginate($perPage)
+    {
+        $this->paginate = new Paginate;
+
+        $this->paginate->records(count($this->get()));
+        $this->paginate->paginate($perPage);
+        $this->isPaginate = true;
+
+        return $this;
+    }
+
     public function get()
     {
         $select = $this->bindAndExecute();
@@ -76,6 +91,11 @@ trait Read
 
     private function bindAndExecute()
     {
+
+        if($this->isPaginate) {
+            $this->sql = $this->sql.$this->paginate->sqlPaginate();
+        }
+
         $select = $this->connect->prepare($this->sql);
         $select->execute($this->binds);
 
