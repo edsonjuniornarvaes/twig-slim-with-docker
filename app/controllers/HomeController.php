@@ -13,9 +13,12 @@ class HomeController extends Controller
 		
 		$users = $users->select()->paginate(3)->get();
 
+		dd($user->links());
+
 		$this->view('home', [
 			'users' => $users,
 			'title' => 'Home',
+			'links' => $user->links()
 		]);
 	}
 

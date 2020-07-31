@@ -4,6 +4,8 @@ namespace app\models;
 
 class Paginate 
 {
+    use Links;
+    
     private $page;
     private $perPage;
     private $offset;
