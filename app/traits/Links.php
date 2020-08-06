@@ -2,11 +2,12 @@
 
 namespace app\traits;
 
-trait Links {
-
+trait Links 
+{
 	protected $maxLinks = 4;
 
-	private function previous() {
+	private function previous() 
+	{
 		if ($this->page > 1) {
 			$preview = ($this->page - 1);
 			$links = '<li><a href="?page=1"> [1] </a></li>';
@@ -16,7 +17,8 @@ trait Links {
 		}
 	}
 
-	private function next() {
+	private function next() 
+	{
 		if ($this->page < $this->pages) {
 			$next = ($this->page + 1);
 			$links = '<li><a href="?page=' . $next . '" aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>';
@@ -26,12 +28,12 @@ trait Links {
 		}
 	}
 
-	public function links() {
+	public function links() 
+	{
 
 		if ($this->pages > 0) {
 
 			$links = "<ul class='pagination'>";
-
 			$links .= $this->previous();
 
 			for ($i = $this->page - $this->maxLinks; $i <= $this->page + $this->maxLinks; $i++) {

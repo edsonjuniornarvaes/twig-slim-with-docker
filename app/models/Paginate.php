@@ -50,8 +50,5 @@ class Paginate
         $this->perPage($perPage);
         $this->offset();
         $this->pages();
-
-        // return $this;
-
     }
 }
