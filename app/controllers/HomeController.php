@@ -9,11 +9,9 @@ class HomeController extends Controller
 
 	public function index() 
 	{
-		$users = new Users;
+		$user = new Users;
 		
-		$users = $users->select()->paginate(3)->get();
-
-		dd($user->links());
+		$users = $user->select()->paginate(1)->get();
 
 		$this->view('home', [
 			'users' => $users,

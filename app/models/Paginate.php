@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\traits\Links;
+
 class Paginate 
 {
     use Links;

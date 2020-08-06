@@ -75,6 +75,11 @@ trait Read
         return $this;
     }
 
+    public function links()
+    {
+        return $this->paginate->links();
+    }
+
     public function get()
     {
         $select = $this->bindAndExecute();
