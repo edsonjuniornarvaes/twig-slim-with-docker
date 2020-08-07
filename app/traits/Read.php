@@ -4,107 +4,120 @@ namespace app\traits;
 
 use app\models\Paginate;
 
-trait Read
+trait Read 
 {
 
-    private $sql;
-    private $binds;
-    private $isPaginate = false;
-    private $paginate;
+	private $sql;
 
-    public function select($fields = '*'){
-       $this->sql = "select {$fields} from {$this->table}";
-       return $this;
-    }
+	private $binds;
 
-    public function where()
-    {
-        
-        $num_args = func_num_args();
-        $args = func_get_args();
+	private $isPaginate = false;
 
-        $args = $this->whereArgs($num_args,$args);
+	private $paginate;
 
-        $this->sql.= " where {$args['field']} {$args['sinal']} :{$args['field']}";
+	public function select($fields = '*') {
+		$this->sql = "select {$fields} from {$this->table}";
 
-        $this->binds = [
-            $args['field'] => $args['value']
-        ];
+		return $this;
+	}
 
-        return $this;
-    }
-
-    private function whereArgs($num_args,$args)
+    public function where() 
     {
 
-        if($num_args < 2){
-            throw new \Exception("Opa, algo errado aconteceu, o where precisa de no mínimo 2 argumentos");
-        }
-        
-        if($num_args == 2){
-            $field = $args[0];
-            $sinal = '=';
-            $value = $args[1];
-        }
-        
-        if($num_args == 3){
-            $field = $args[0];
-            $sinal = $args[1];
-            $value = $args[2]; 
-        }
-        
-        if($num_args > 3){
-            throw new \Exception("Opa, algo errado aconteceu, o where não pode ter mais que 3 argumentos");
-        }
+		$num_args = func_num_args();
 
-        return [
-            'field' => $field,
-            'sinal' => $sinal,
-            'value' => $value
-        ];
-    }
+		$args = func_get_args();
 
-    public function paginate($perPage)
+		$args = $this->whereArgs($num_args, $args);
+
+		$this->sql .= " where {$args['field']} {$args['sinal']} :{$args['field']}";
+
+		$this->binds = [
+			$args['field'] => $args['value'],
+		];
+
+		return $this;
+
+	}
+
+    private function whereArgs($num_args, $args) 
     {
-        $this->paginate = new Paginate;
-        $this->paginate->records($this->count());
-        $this->sql .= $this->paginate->sqlPaginate();
-        $this->paginate->paginate($perPage);
 
-        return $this;
-    }
+		if ($num_args < 2) {
+			throw new \Exception("Opa, algo errado aconteceu, o where precisa de no mínimo 2 argumentos");
+		}
 
-    public function links()
+		if ($num_args == 2) {
+			$field = $args[0];
+			$sinal = '=';
+			$value = $args[1];
+		}
+
+		if ($num_args == 3) {
+			$field = $args[0];
+			$sinal = $args[1];
+			$value = $args[2];
+		}
+
+		if ($num_args > 3) {
+			throw new \Exception("Opa, algo errado aconteceu, o where não pode ter mais que 3 argumentos");
+		}
+
+		return [
+			'field' => $field,
+			'sinal' => $sinal,
+			'value' => $value,
+		];
+	}
+
+    public function paginate($perPage) 
     {
-        return $this->paginate->links();
-    }
+		$this->paginate = new Paginate;
 
-    public function get()
+		$this->paginate->records($this->count());
+
+		$this->paginate->paginate($perPage);
+
+		$this->sql .= $this->paginate->sqlPaginate();
+
+		return $this;
+
+	}
+
+    public function links() 
     {
-        $select = $this->bindAndExecute();
+		return $this->paginate->links();
+	}
 
-        return $select->fetchAll();
-    }
-
-    public function first()
+    public function get() 
     {
-       $select = $this->bindAndExecute();
+		$select = $this->bindAndExecute();
 
-       return $select->fetch();
-    }
+		return $select->fetchAll();
+	}
 
-    public function count()
+    public function first() 
     {
-      $select = $this->bindAndExecute();
-      return $selec->rowCount();  
-    }
+		$select = $this->bindAndExecute();
 
-    private function bindAndExecute()
+		return $select->fetch();
+	}
+
+    public function count() 
     {
-        $select = $this->connect->prepare($this->sql);
-        $select->execute($this->binds);
+		$select = $this->bindAndExecute();
 
-        return $select;
-    }
+		return $select->rowCount();
+	}
+
+    private function bindAndExecute() 
+    {
+
+		$select = $this->connect->prepare($this->sql);
+
+		$select->execute($this->binds);
+
+		return $select;
+	}
 
 }
