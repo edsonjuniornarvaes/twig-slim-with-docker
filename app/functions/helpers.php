@@ -33,7 +33,8 @@ function error($message)
 
 function success($message) 
 {
-	return "<span class='alert alert-success'>{$message}</span>";
+	return "<span class='al
+	ert alert-success'>{$message}</span>";
 }
 
 function redirect($target) 
@@ -46,4 +47,9 @@ function back()
 {
 	Redirect::back();
 	die();
+}
+
+function busca() 
+{
+	return filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING);
 }

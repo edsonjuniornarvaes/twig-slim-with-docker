@@ -11,7 +11,7 @@ class HomeController extends Controller
 	{
 		$user = new Users;
 		
-		$users = $user->select()->paginate(1)->get();
+		$users = $user->select()->busca('name', 'email')->paginate(10)->get();
 
 		$this->view('home', [
 			'users' => $users,

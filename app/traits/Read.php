@@ -87,13 +87,26 @@ trait Read
     public function links() 
     {
 		return $this->paginate->links();
-	}
-
-    public function get() 
+    }
+    
+    public function get()
     {
-		$select = $this->bindAndExecute();
+        $select = $this->bindAndExecute();
+        return $select->fetchAll();
+    }
 
-		return $select->fetchAll();
+    public function busca($fields) 
+    {
+        $fields = explode(',', $fields);
+        $this->sql .= ' where';
+        foreach ($fields as $field) {
+            $this->sql .= " {$field} like :{$field} or";
+            $this->binds[$field] = "%" . busca() . "%";
+        }
+
+        $this->sql = rtrim($this->sql, 'or');
+
+        return $this;
 	}
 
     public function first() 
