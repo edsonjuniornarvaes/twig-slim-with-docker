@@ -2,11 +2,11 @@
 Create a solid and professional structure with these tools.
 
 
-|   :pencil2:                | Module content                                | :construction:             | Release
-|:---------------------------|:----------------------------------------------|:---------------------------|:---------------------------|
-| :heavy_check_mark:         | Twig and Slim with Docker structure           | :bookmark:                 |[0.0.1](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.1) 
-| :heavy_check_mark:         | Data validation system                        | :bookmark:                 |[0.0.2](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.2)
-| :heavy_check_mark:         | Full Crud                                     | :bookmark:                 |[0.0.3](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.3)
-| :heavy_check_mark:         | Most beautiful and descriptive errors         | :bookmark:                 |[0.0.4](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.4)
-| :heavy_check_mark:         | Paginate                                      | :bookmark:                 |[0.0.5](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.5)
-| :heavy_check_mark:         | Search system with pagination                 | :bookmark:                 |[0.0.6](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.6)
+|   :pencil2:                | Module content                                | :construction:             | Release                    | :rocket:                   |
+|:---------------------------|:----------------------------------------------|:---------------------------|:---------------------------|:---------------------------|
+| :heavy_check_mark:         | Twig and Slim with Docker structure           | :bookmark:                 |0.0.1                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.1) 
+| :heavy_check_mark:         | Data validation system                        | :bookmark:                 |0.0.2                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.2)
+| :heavy_check_mark:         | Full Crud                                     | :bookmark:                 |0.0.3                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.3)
+| :heavy_check_mark:         | Most beautiful and descriptive errors         | :bookmark:                 |0.0.4                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.4)
+| :heavy_check_mark:         | Paginate                                      | :bookmark:                 |0.0.5                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.5)
+| :heavy_check_mark:         | Search system with pagination                 | :bookmark:                 |0.0.6                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.6)
