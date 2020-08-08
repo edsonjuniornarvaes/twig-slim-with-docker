@@ -2,12 +2,13 @@
 
 namespace app\models;
 
-class Posts extends Model
-{
-    protected $table = 'posts';
+class Posts extends Model {
+	protected $table = 'posts';
 
-    public function postsWithIdGreaterThan2()
-    {
-        
-    }
+	public function posts() {
+		$this->sql = "select * from {$this->table} inner join users on users.id = posts.user";
+
+		return $this;
+	}
+
 }

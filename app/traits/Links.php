@@ -6,13 +6,18 @@ trait Links
 {
 	protected $maxLinks = 4;
 
+	private function pageRequest()
+	{
+		return (!busca()) ? "?page=" : "?s=" . busca() . "&page=";
+	}
+
 	private function previous() 
 	{
 		if ($this->page > 1) {
 			$preview = ($this->page - 1);
-			$links = '<li><a href="?page=1"> [1] </a></li>';
-			$links .= '<li><a href="?page=' . $preview . '" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li>';
-
+			$links = '<li><a href="' . $this->pageRequest() . '1"> [1] </a></li>';
+			$links .= '<li><a href="' . $this->pageRequest() . $preview . '" aria-label="Previous"> 
+					   <span aria-hidden="true">&laquo;</span></a></li>';
 			return $links;
 		}
 	}
@@ -21,8 +26,9 @@ trait Links
 	{
 		if ($this->page < $this->pages) {
 			$next = ($this->page + 1);
-			$links = '<li><a href="?page=' . $next . '" aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>';
-			$links .= '<li><a href="?page=' . $this->pages . '"> [' . $this->pages . '] </a></li>';
+			$links = '<li><a href="' . $this->pageRequest() . $next . '" aria-label="Next"> 
+					  <span aria-hidden="true">&raquo;</span></a></li>';
+			$links .= '<li><a href="' . $this->pageRequest() . $this->pages . '"> [' . $this->pages . '] </a></li>';
 
 			return $links;
 		}
@@ -41,7 +47,7 @@ trait Links
 				$class = ($i == $this->page) ? 'actual' : '';
 
 				if ($i > 0 && $i <= $this->pages) {
-					$links .= "<li><a href='?page=" . $i . "' class=" . $class . ">{$i}</a></li>";
+					$links .= "<li class='page-item'><a href='" . $this->pageRequest() .$i . "' class=" .$class . ">{$i}</a></li>";
 				}
 			}
 

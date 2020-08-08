@@ -2,52 +2,46 @@
 
 namespace app\models;
 
-use app\traits\Read;
+use app\models\Connection;
 use app\traits\Create;
 use app\traits\Delete;
+use app\traits\Read;
 use app\traits\Update;
 
-use app\models\Connection;
+abstract class Model {
 
-abstract class Model 
-{
-
-	use Create,Read,Update,Delete;
+	use Create, Read, Update, Delete;
 
 	protected $connect;
 	protected $field;
 	protected $value;
+	protected $sql;
 
-	public function __construct() 
-	{
+	public function __construct() {
 		$this->connect = Connection::connect();
 	}
 
-	public function all() 
-	{
-		$sql = "select * from {$this->table}";
-		$all = $this->connect->query($sql);
-		$all->execute();
+	public function all() {
+		$this->sql = "select * from {$this->table}";
 
-		return $all->fetchAll();
+		return $this;
 	}
 
-	public function find($field, $value) 
-	{
+	public function find($field, $value) {
 		$this->field = $field;
+
 		$this->value = $value;
 
 		return $this;
 	}
 
-	public function destroy($field,$value)
-	{
+	public function destroy($field, $value) {
 		$sql = "delete from {$this->table} where {$field} = :{$field}";
-        $delete = $this->connect->prepare($sql);
-        $delete->bindValue($field,$value);
-        $delete->execute();
+		$delete = $this->connect->prepare($sql);
+		$delete->bindValue($field, $value);
+		$delete->execute();
 
-        return $delete->rowCount();
+		return $delete->rowCount();
 	}
 
 }

@@ -4,10 +4,7 @@ namespace app\traits;
 
 use app\models\Paginate;
 
-trait Read 
-{
-
-	private $sql;
+trait Read {
 
 	private $binds;
 
@@ -21,8 +18,7 @@ trait Read
 		return $this;
 	}
 
-    public function where() 
-    {
+	public function where() {
 
 		$num_args = func_num_args();
 
@@ -40,8 +36,7 @@ trait Read
 
 	}
 
-    private function whereArgs($num_args, $args) 
-    {
+	private function whereArgs($num_args, $args) {
 
 		if ($num_args < 2) {
 			throw new \Exception("Opa, algo errado aconteceu, o where precisa de no mínimo 2 argumentos");
@@ -70,8 +65,7 @@ trait Read
 		];
 	}
 
-    public function paginate($perPage) 
-    {
+	public function paginate($perPage) {
 		$this->paginate = new Paginate;
 
 		$this->paginate->records($this->count());
@@ -84,47 +78,45 @@ trait Read
 
 	}
 
-    public function links() 
-    {
+	public function links() {
 		return $this->paginate->links();
-    }
-    
-    public function get()
-    {
-        $select = $this->bindAndExecute();
-        return $select->fetchAll();
-    }
-
-    public function busca($fields) 
-    {
-        $fields = explode(',', $fields);
-        $this->sql .= ' where';
-        foreach ($fields as $field) {
-            $this->sql .= " {$field} like :{$field} or";
-            $this->binds[$field] = "%" . busca() . "%";
-        }
-
-        $this->sql = rtrim($this->sql, 'or');
-
-        return $this;
 	}
 
-    public function first() 
-    {
+	public function busca($fields) {
+
+		$fields = explode(',', $fields);
+
+		$this->sql .= ' where';
+		foreach ($fields as $field) {
+			$this->sql .= " {$field} like :{$field} or";
+			$this->binds[$field] = "%" . busca() . "%";
+		}
+
+		$this->sql = rtrim($this->sql, 'or');
+
+		return $this;
+
+	}
+
+	public function get() {
+		$select = $this->bindAndExecute();
+
+		return $select->fetchAll();
+	}
+
+	public function first() {
 		$select = $this->bindAndExecute();
 
 		return $select->fetch();
 	}
 
-    public function count() 
-    {
+	public function count() {
 		$select = $this->bindAndExecute();
 
 		return $select->rowCount();
 	}
 
-    private function bindAndExecute() 
-    {
+	private function bindAndExecute() {
 
 		$select = $this->connect->prepare($this->sql);
 

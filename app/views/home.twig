@@ -1,3 +1,4 @@
+
 {% extends 'master.twig' %}
 
 {% block master %}
@@ -7,14 +8,16 @@
 <form action="">
     <input type="text" name="s" class="form-control" placeholder="Buscar user">
 </form>
-<hr>
+
+<br>
+
 <table class="table table-striped">
     <thead>
         <tr>
             <td>Id</td>
-            <td>Name</td>
-            <td>Ações</td>
-            <td>Ações</td>
+            <td>Title</td>
+            <td></td>
+            <td></td>
         </tr>
     </thead>
     <tbody>
@@ -22,19 +25,19 @@
             <tr>
                 <td>{{ user.id }}</td>
                 <td>{{ user.name }}</td>
-                <td><a href="/user/edit/{{ user.id }}" class="btn btn-success btn-sm">Editar</a></td>
-                <td><a href="/user/delete/{{ user.id }}" class="btn btn-danger btn-sm">Deletar</a></td>
+                <td><a href="/user/edit/{{ user.id }}" class="btn btn-success">Editar</a></td>
+                <td><a href="/user/delete/{{ user.id }}" class="btn btn-danger">Deletar</a></td>
             </tr>
-        
         {% endfor %}
     </tbody>
+
     <tbody>
         <tr>
             <td>{{ links | raw }}</td>
         </tr>
     </tbody>
-
 </table>
 
+<br>
 
 {% endblock %}
