@@ -1,9 +1,38 @@
 {% extends 'master.twig' %}
 
 {% block master %}
+    <hr>
+	<h2>Contato</h2>
+	<hr>
 
-<h2>Contato</h2>
+	{{ message('message') }}
 
-{{ teste() }}
+	<form action="/contato/store" method="post">
+		 <div class="form-group">
+			<label for="">Name</label>
+			<input type="text" name="name" class="form-control">
+			{{ message('name') }}
+		</div>
+	
+		 <div class="form-group">
+			<label for="">Email</label>
+			<input type="text" name="email" class="form-control">
+			{{ message('email') }}
+		</div>
+
+		 <div class="form-group">
+			<label for="">Assunto</label>
+			<input type="text" name="assunto" class="form-control">
+			{{ message('assunto') }}
+		</div>
+		
+		<div class="form-group">
+			<textarea name="mensagem" rows="10" style="width:100%;"></textarea>
+			{{ message('mensagem')  }}
+		</div>	
+
+		<button type="submit" class="btn btn-success">Enviar</button>
+
+	</form>
 
 {% endblock %}

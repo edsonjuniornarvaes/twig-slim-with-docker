@@ -4,7 +4,8 @@ namespace app\traits;
 
 use app\models\Paginate;
 
-trait Read {
+trait Read 
+{
 
 	private $binds;
 
@@ -18,7 +19,8 @@ trait Read {
 		return $this;
 	}
 
-	public function where() {
+	public function where() 
+	{
 
 		$num_args = func_num_args();
 
@@ -36,25 +38,29 @@ trait Read {
 
 	}
 
-	private function whereArgs($num_args, $args) {
+	private function whereArgs($num_args, $args) 
+	{
 
 		if ($num_args < 2) {
 			throw new \Exception("Opa, algo errado aconteceu, o where precisa de no mínimo 2 argumentos");
 		}
 
-		if ($num_args == 2) {
+		if ($num_args == 2) 
+		{
 			$field = $args[0];
 			$sinal = '=';
 			$value = $args[1];
 		}
 
-		if ($num_args == 3) {
+		if ($num_args == 3) 
+		{
 			$field = $args[0];
 			$sinal = $args[1];
 			$value = $args[2];
 		}
 
-		if ($num_args > 3) {
+		if ($num_args > 3) 
+		{
 			throw new \Exception("Opa, algo errado aconteceu, o where não pode ter mais que 3 argumentos");
 		}
 
@@ -65,7 +71,8 @@ trait Read {
 		];
 	}
 
-	public function paginate($perPage) {
+	public function paginate($perPage) 
+	{
 		$this->paginate = new Paginate;
 
 		$this->paginate->records($this->count());
@@ -78,11 +85,13 @@ trait Read {
 
 	}
 
-	public function links() {
+	public function links() 
+	{
 		return $this->paginate->links();
 	}
 
-	public function busca($fields) {
+	public function busca($fields) 
+	{
 
 		$fields = explode(',', $fields);
 
@@ -98,25 +107,29 @@ trait Read {
 
 	}
 
-	public function get() {
+	public function get() 
+	{
 		$select = $this->bindAndExecute();
 
 		return $select->fetchAll();
 	}
 
-	public function first() {
+	public function first() 
+	{
 		$select = $this->bindAndExecute();
 
 		return $select->fetch();
 	}
 
-	public function count() {
+	public function count() 
+	{
 		$select = $this->bindAndExecute();
 
 		return $select->rowCount();
 	}
 
-	private function bindAndExecute() {
+	private function bindAndExecute() 
+	{
 
 		$select = $this->connect->prepare($this->sql);
 
