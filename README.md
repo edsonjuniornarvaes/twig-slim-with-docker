@@ -1,5 +1,5 @@
 # Twig and Slim with Docker structure
-Create a solid and professional structure with these tools.
+Create a solid and professional structure with these tools. With features such as data validation, complete crud, beautiful and descriptive errors, pagination, pagination search, sending emails.
 
 
 |   :pencil2:                | Module content                                | :construction:             | Release                    | :rocket:                   |
@@ -11,3 +11,5 @@ Create a solid and professional structure with these tools.
 | :heavy_check_mark:         | Paginate                                      | :bookmark:                 |0.0.5                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.5)
 | :heavy_check_mark:         | Search system with pagination                 | :bookmark:                 |0.0.6                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.6)
 | :heavy_check_mark:         | Sending emails with templates                 | :bookmark:                 |0.0.7                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.7)
+
+- Edson Junior de Andrade Narvaes
