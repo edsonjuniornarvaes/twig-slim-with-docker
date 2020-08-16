@@ -11,5 +11,6 @@ Create a solid and professional structure with these tools. With features such a
 | :heavy_check_mark:         | Paginate                                      | :bookmark:                 |0.0.5                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.5)
 | :heavy_check_mark:         | Search system with pagination                 | :bookmark:                 |0.0.6                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.6)
 | :heavy_check_mark:         | Sending emails with templates                 | :bookmark:                 |0.0.7                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.7)
+| :heavy_check_mark:         | Upload and resizing images                    | :bookmark:                 |0.0.8                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.8)
 
 - Edson Junior de Andrade Narvaes
