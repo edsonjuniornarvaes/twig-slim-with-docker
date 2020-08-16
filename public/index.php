@@ -10,5 +10,7 @@ $app->post('/user/update/{id}', 'app\controllers\UserController:update');
 $app->get('/user/delete/{id}', 'app\controllers\UserController:destroy');
 $app->get('/contato', 'app\controllers\ContatoController:index');
 $app->post('/contato/store', 'app\controllers\ContatoController:store');
+$app->get('/perfil', 'app\controllers\PerfilController:index');
+$app->get('/user/photo/update', 'app\controllers\PerfilPhotoController:store');
 
 $app->run();

@@ -1,0 +1,22 @@
+{% extends 'master.twig' %}
+
+{% block master %}
+
+	<h2>Cadastro - Sistema de validação</h2>
+    
+	<hr>
+
+	{{ message('message') }}
+
+	<form action="/user/photo/update" method="post">
+		 <div class="form-group">
+			<label for="">Foto</label>
+			<input type="file" name="file" class="form-control">
+			{{ message('file') }}
+		</div>
+
+		<button type="submit" class="btn btn-success">Cadastrar</button>
+
+	</form>
+
+{% endblock %}
