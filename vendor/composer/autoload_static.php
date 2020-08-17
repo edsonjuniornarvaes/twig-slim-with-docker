@@ -7,6 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInit9f3ebb6bb500c1ed941ca37d2c6bbdd3
 {
     public static $files = array (
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'bed762021a0dd1790767839c83f463c9' => __DIR__ . '/../..' . '/app/functions/helpers.php',
@@ -39,7 +41,12 @@ class ComposerStaticInit9f3ebb6bb500c1ed941ca37d2c6bbdd3
         ),
         'I' => 
         array (
+            'Intervention\\Image\\' => 19,
             'Interop\\Container\\' => 18,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
         ),
         'F' => 
         array (
@@ -88,9 +95,17 @@ class ComposerStaticInit9f3ebb6bb500c1ed941ca37d2c6bbdd3
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
+        'Intervention\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
+        ),
         'Interop\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
         'FastRoute\\' => 
         array (
