@@ -2,15 +2,14 @@
 /**
  * Slim Framework (https://slimframework.com)
  *
- * @link      https://github.com/slimphp/Slim
- * @copyright Copyright (c) 2011-2017 Josh Lockhart
- * @license   https://github.com/slimphp/Slim/blob/3.x/LICENSE.md (MIT License)
+ * @license https://github.com/slimphp/Slim/blob/3.x/LICENSE.md (MIT License)
  */
+
 namespace Slim\Handlers;
 
-/**
- * Abstract Slim application error handler
- */
+use Exception;
+use Throwable;
+
 abstract class AbstractError extends AbstractHandler
 {
     /**
@@ -19,25 +18,17 @@ abstract class AbstractError extends AbstractHandler
     protected $displayErrorDetails;
 
     /**
-     * @var bool|string
-     */
-    protected $outputBuffering;
-
-    /**
-     * Constructor
-     *
      * @param bool $displayErrorDetails Set to true to display full details
      */
-    public function __construct($displayErrorDetails = false, $outputBuffering = false)
+    public function __construct($displayErrorDetails = false)
     {
         $this->displayErrorDetails = (bool) $displayErrorDetails;
-        $this->outputBuffering = $outputBuffering;
     }
 
     /**
      * Write to the error log if displayErrorDetails is false
      *
-     * @param \Exception|\Throwable $throwable
+     * @param Exception|Throwable $throwable
      *
      * @return void
      */
@@ -62,7 +53,7 @@ abstract class AbstractError extends AbstractHandler
     /**
      * Render error as Text.
      *
-     * @param \Exception|\Throwable $throwable
+     * @param Exception|Throwable $throwable
      *
      * @return string
      */
@@ -96,7 +87,7 @@ abstract class AbstractError extends AbstractHandler
     /**
      * Wraps the error_log function so that this can be easily tested
      *
-     * @param $message
+     * @param string $message
      */
     protected function logError($message)
     {
