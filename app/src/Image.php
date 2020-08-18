@@ -8,6 +8,7 @@ class Image {
     private $intervention;
     private $image;
     private $rename;
+    private $resized = false;
 
     public function __construct($imageName) {
         $this->intervention = new ImageManager;
@@ -25,6 +26,16 @@ class Image {
 
     public function size($type) {
         $size = $this->type($type);
+
+        $target = getimagesize($this->image['tmp_name']);
+
+        $percent = ($target[0] > $target[1]) ? ($size / $target[0]) : ($size / $target[1]);
+        $resizeWidth = round($target[0] * $percent);
+        $resizeHeight = round($target[1] * $percent);
+
+        $this->type = $type;
+        $this->resized = true;
+
     }
 
     public function type($type) {
@@ -38,5 +49,15 @@ class Image {
         }
 
         return $size;
+    }
+
+    private function doUpload() {
+        if(!$this->resized) {
+            throw new \Exception('Esta faltando você chamar o método size para redimensionar essa foto');
+        }
+    }
+
+    public function upload() {
+
     }
 }
