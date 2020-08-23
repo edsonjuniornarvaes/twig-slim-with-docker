@@ -90,5 +90,9 @@ class Image {
     public function upload() {
         $this->rename();
         $this->doUpload();
+	}
+	
+    public function delete($photo) {
+		@unlink(path().'/public'.$photo);
     }
 }
