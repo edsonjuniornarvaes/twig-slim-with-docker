@@ -46,6 +46,23 @@ trait Validations
 		}
 	}
 
+	public function image($field) 
+	{
+		$file = $_FILES[$field]['name'];
+
+		if(empty($file)) {
+			$this->errors[$field][] = flash($field, error('Esse campo é obrigatório'));
+		}
+
+		$extension = pathinfo($file, PATHINFO_EXTENSION);
+
+		if(!in_array($extension, [
+			'png', 'jpg',
+		])) {
+			$this->errors[$field][] = flash($field, error("Não aceitamos arquivos com a extensão {$extension}"));
+		}
+	}
+
 	public function hasErrors() 
 	{
 		return !empty($this->errors);

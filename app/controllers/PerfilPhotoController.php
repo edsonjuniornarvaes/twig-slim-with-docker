@@ -2,11 +2,20 @@
 
 namespace app\controllers;
 use app\src\Image;
-use app\models\Users;
+use app\src\Validate;
 
 class PerfilPhotoController extends Controller {
 
     public function store() {
+
+        $validate = new Validate;
+        $validate->validate([
+            'file' => 'image'
+        ]);
+
+        if($validate->hasErrors()) {
+            return back();
+        }
 
         $user = new Users;
         $userEncontrado = $user->select()->where('id', 1)->first();
