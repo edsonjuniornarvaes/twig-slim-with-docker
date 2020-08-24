@@ -19,6 +19,21 @@ trait Read
 		return $this;
 	}
 
+	public function all() 
+	{
+		$this->sql = "select * from {$this->table}";
+
+		return $this;
+	}
+
+	public function findBy($field, $value) {
+		$this->sql = "select * from {$this->table}";
+
+		$this->where($field, $value);
+
+		return $this->first();
+	}
+
 	public function where() 
 	{
 

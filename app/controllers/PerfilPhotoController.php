@@ -7,7 +7,6 @@ use app\src\Validate;
 class PerfilPhotoController extends Controller {
 
     public function store() {
-
         $validate = new Validate;
         $validate->validate([
             'file' => 'image'

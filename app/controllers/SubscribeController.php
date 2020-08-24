@@ -2,11 +2,9 @@
 
 namespace app\controllers;
 
-class SubscribeController 
-{
+class SubscribeController {
 
-    public function store()
-    {
+    public function store() {
         echo json_encode('subscribe user');
     }
 

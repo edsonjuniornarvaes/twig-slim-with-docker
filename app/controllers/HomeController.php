@@ -3,15 +3,19 @@
 namespace app\controllers;
 
 use app\models\Users;
+use app\src\Password;
 
-class HomeController extends Controller 
-{
-
-	public function index() 
-	{
+class HomeController extends Controller {
+	public function index() {
 		$user = new Users;
+		$users = $user->select()->busca('name', 'email')->paginate(2)->get();
 		
-		$users = $user->select()->busca('name', 'email')->paginate(1)->get();
+		$login = new Users;
+		$loggedIn = $login->login($data, new Users);
+
+		if($loggedIn) {
+			return false;	
+		}
 
 		$this->view('home', [
 			'users' => $users,
@@ -19,5 +23,4 @@ class HomeController extends Controller
 			'links' => $user->links()
 		]);
 	}
-
 }

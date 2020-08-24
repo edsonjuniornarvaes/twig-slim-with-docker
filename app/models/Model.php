@@ -22,12 +22,7 @@ abstract class Model {
 		$this->connect = Connection::connect();
 	}
 
-	public function all() 
-	{
-		$this->sql = "select * from {$this->table}";
 
-		return $this;
-	}
 
 	public function find($field, $value) 
 	{

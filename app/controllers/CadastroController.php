@@ -5,21 +5,15 @@ namespace app\controllers;
 use app\models\Users;
 use app\src\Validate;
 
-class CadastroController extends Controller 
-{
-
-	public function create() 
-	{
+class CadastroController extends Controller {
+	public function create() {
 		$this->view('cadastro', [
 			'title' => 'Cadastro',
 		]);
 	}
 
-	public function store() 
-	{
-
+	public function store() {
 		$validate = new Validate;
-
 		$data = $validate->validate([
 			'name' => 'required',
 			'email' => 'required:email:unique@users',
@@ -34,10 +28,8 @@ class CadastroController extends Controller
 		$user = $user->create((array)$data);
 
 		if($user){
-			flash('message',success('Cadastrado com sucesso !'));
+			flash('message',success('Cadastrado com sucesso!'));
 			return back();
 		}
-
 	}
-
 }

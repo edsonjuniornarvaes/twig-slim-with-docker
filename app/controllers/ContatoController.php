@@ -9,16 +9,14 @@ use app\templates\Contato;
 class ContatoController extends Controller{
 
     public function index(){
-        $this->view('contato',[
+        $this->view('contato', [
             'title' => 'Contato',
             'nome' => 'Alexandre'
         ]);
     }
 
     public function store(){
-
         $validate = new Validate;
-
         $data = $validate->validate([
             'name' => 'required',
             'email' => 'required:email',
@@ -31,7 +29,6 @@ class ContatoController extends Controller{
         }
 
         $email = new Email;
-
         $email->data([
             'fromName' => $data->name,
             'fromEmail' => $data->email,
@@ -40,7 +37,5 @@ class ContatoController extends Controller{
             'assunto' => $data->assunto,
             'mensagem' =>$data->mensagem, 
         ])->template(new Contato)->send();
-
     }
-
 }
