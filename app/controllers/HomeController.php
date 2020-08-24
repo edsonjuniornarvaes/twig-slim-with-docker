@@ -10,8 +10,8 @@ class HomeController extends Controller {
 		$user = new Users;
 		$users = $user->select()->busca('name', 'email')->paginate(2)->get();
 		
-		$login = new Users;
-		$loggedIn = $login->login($data, new Users);
+		$login = new Login;
+		$loggedIn = $login->type()->login($data, new Users);
 
 		if($loggedIn) {
 			return false;	
