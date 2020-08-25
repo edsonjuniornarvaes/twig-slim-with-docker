@@ -19,13 +19,15 @@ class Login {
 
 	public function login($data, Model $model) {
 
-		if (!isset($this->type)) {
+		if (!isset($this->type)) 
+		{
 			throw new \Exception("Para fazer o login, verifique se esta passando o tipo");
 		}
 
 		$user = $model->findBy('email', $data->email);
 
-		if (!$user) {
+		if (!$user) 
+		{
 			return false;
 		}
 
@@ -39,7 +41,8 @@ class Login {
 
 	}
 
-	public function logout() {
+	public function logout() 
+	{
 
 		session_destroy();
 

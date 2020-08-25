@@ -14,4 +14,4 @@ Create a solid and professional structure with these tools. With features such a
 | :heavy_check_mark:         | Upload and resizing images                    | :bookmark:                 |0.0.8                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.8)
 | :heavy_check_mark:         | Login                                         | :bookmark:                 |0.0.9                       |[GO](https://github.com/edsonjuniornarvaes/twig-slim-docker-structure/releases/tag/0.0.9)
 
-- Edson Junior de Andrade Narvaes
+- Edson Junior de Andrade Narvaes.
