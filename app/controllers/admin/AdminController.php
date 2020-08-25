@@ -9,16 +9,12 @@ use app\src\Validate;
 
 
 class AdminController extends Controller {
-
 	public function index() {
-
 		$this->view('admin.login', []);
 	}
 
 	public function store() {
-
 		$validate = new Validate;
-
 		$data = $validate->validate([
 			'email' => 'required:email',
 			'password' => 'required',
@@ -34,14 +30,11 @@ class AdminController extends Controller {
 		if ($loggedIn) {
 			redirect('/painel');
 		}
-
 	}
 
 	public function destroy() {
-
 		$login = new Login('admin');
 		return $login->logout();
 
 	}
-
 }

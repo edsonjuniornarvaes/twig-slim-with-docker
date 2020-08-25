@@ -6,18 +6,15 @@ use app\models\Paginate;
 
 trait Read {
 	private $binds;
-
 	private $paginate;
 
 	public function select($fields = '*') {
 		$this->sql = "select {$fields} from {$this->table}";
-
 		return $this;
 	}
 
 	public function all() {
 		$this->sql = "select * from {$this->table}";
-
 		return $this;
 	}
 
@@ -27,21 +24,15 @@ trait Read {
 
 	public function findBy($field, $value) {
 		$this->sql = "select * from {$this->table}";
-
 		$this->where($field, $value);
-
 		return $this->first();
 	}
 
 	public function where() {
 		$num_args = func_num_args();
-
 		$args = func_get_args();
-
 		$args = $this->whereArgs($num_args, $args);
-
 		$this->sql .= " where {$args['field']} {$args['sinal']} :{$args['field']}";
-
 		$this->binds = [
 			$args['field'] => $args['value'],
 		];
@@ -79,13 +70,9 @@ trait Read {
 
 	public function paginate($perPage) {
 		$this->paginate = new Paginate;
-
 		$this->paginate->records($this->count());
-
 		$this->paginate->paginate($perPage);
-
 		$this->sql .= $this->paginate->sqlPaginate();
-
 		return $this;
 	}
 
@@ -95,7 +82,6 @@ trait Read {
 
 	public function busca($fields) {
 		$fields = explode(',', $fields);
-
 		$this->sql .= ' where';
 		foreach ($fields as $field) {
 			$this->sql .= " {$field} like :{$field} or";
@@ -103,33 +89,27 @@ trait Read {
 		}
 
 		$this->sql = rtrim($this->sql, 'or');
-
 		return $this;
 	}
 
 	public function get() {
 		$select = $this->bindAndExecute();
-
 		return $select->fetchAll();
 	}
 
 	public function first() {
 		$select = $this->bindAndExecute();
-
 		return $select->fetch();
 	}
 
 	public function count() {
 		$select = $this->bindAndExecute();
-
 		return $select->rowCount();
 	}
 
 	private function bindAndExecute() {
 		$select = $this->connect->prepare($this->sql);
-
 		$select->execute($this->binds);
-
 		return $select;
 	}
 }
