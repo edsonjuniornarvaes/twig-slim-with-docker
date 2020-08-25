@@ -4,12 +4,8 @@ namespace app\traits;
 
 use app\models\Paginate;
 
-trait Read 
-{
-
+trait Read {
 	private $binds;
-
-	private $isPaginate = false;
 
 	private $paginate;
 
@@ -19,11 +15,14 @@ trait Read
 		return $this;
 	}
 
-	public function all() 
-	{
+	public function all() {
 		$this->sql = "select * from {$this->table}";
 
 		return $this;
+	}
+
+	public function getUser() {
+		return (new Static )->user();
 	}
 
 	public function findBy($field, $value) {
@@ -34,9 +33,7 @@ trait Read
 		return $this->first();
 	}
 
-	public function where() 
-	{
-
+	public function where() {
 		$num_args = func_num_args();
 
 		$args = func_get_args();
@@ -50,33 +47,27 @@ trait Read
 		];
 
 		return $this;
-
 	}
 
-	private function whereArgs($num_args, $args) 
-	{
-
+	private function whereArgs($num_args, $args) {
 		if ($num_args < 2) {
-			throw new \Exception("Opa, algo errado aconteceu, o where precisa de no mínimo 2 argumentos");
+			throw new \Exception('Opa, algo errado aconteceu, o where precisa de no mínimo 2 argumentos');
 		}
 
-		if ($num_args == 2) 
-		{
+		if ($num_args == 2) {
 			$field = $args[0];
 			$sinal = '=';
 			$value = $args[1];
 		}
 
-		if ($num_args == 3) 
-		{
+		if ($num_args == 3) {
 			$field = $args[0];
 			$sinal = $args[1];
 			$value = $args[2];
 		}
 
-		if ($num_args > 3) 
-		{
-			throw new \Exception("Opa, algo errado aconteceu, o where não pode ter mais que 3 argumentos");
+		if ($num_args > 3) {
+			throw new \Exception('Opa, algo errado aconteceu, o where não pode ter mais que 3 argumentos');
 		}
 
 		return [
@@ -86,8 +77,7 @@ trait Read
 		];
 	}
 
-	public function paginate($perPage) 
-	{
+	public function paginate($perPage) {
 		$this->paginate = new Paginate;
 
 		$this->paginate->records($this->count());
@@ -97,60 +87,49 @@ trait Read
 		$this->sql .= $this->paginate->sqlPaginate();
 
 		return $this;
-
 	}
 
-	public function links() 
-	{
+	public function links() {
 		return $this->paginate->links();
 	}
 
-	public function busca($fields) 
-	{
-
+	public function busca($fields) {
 		$fields = explode(',', $fields);
 
 		$this->sql .= ' where';
 		foreach ($fields as $field) {
 			$this->sql .= " {$field} like :{$field} or";
-			$this->binds[$field] = "%" . busca() . "%";
+			$this->binds[$field] = '%' . busca() . '%';
 		}
 
 		$this->sql = rtrim($this->sql, 'or');
 
 		return $this;
-
 	}
 
-	public function get() 
-	{
+	public function get() {
 		$select = $this->bindAndExecute();
 
 		return $select->fetchAll();
 	}
 
-	public function first() 
-	{
+	public function first() {
 		$select = $this->bindAndExecute();
 
 		return $select->fetch();
 	}
 
-	public function count() 
-	{
+	public function count() {
 		$select = $this->bindAndExecute();
 
 		return $select->rowCount();
 	}
 
-	private function bindAndExecute() 
-	{
-
+	private function bindAndExecute() {
 		$select = $this->connect->prepare($this->sql);
 
 		$select->execute($this->binds);
 
 		return $select;
 	}
-
 }

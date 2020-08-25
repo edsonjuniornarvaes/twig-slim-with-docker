@@ -13,8 +13,9 @@ $app->post('/contato/store', 'app\controllers\ContatoController:store');
 $app->get('/perfil', 'app\controllers\PerfilController:index');
 $app->post('/user/photo/update', 'app\controllers\PerfilPhotoController:store');
 
-
 $app->get('/admin', 'app\controllers\admin\AdminController:index');
+$app->get('/painel', 'app\controllers\admin\PainelController:index');
 $app->post('/login', 'app\controllers\admin\AdminController:store');
+$app->get('/admin/logout', 'app\controllers\admin\AdminController:destroy');
 
 $app->run();
