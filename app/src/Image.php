@@ -1,11 +1,11 @@
 <?php
-
 namespace app\src;
 
 use Intervention\Image\ImageManager;
 
 class Image {
-    private $intervention;
+
+	private $intervention;
 
 	private $image;
 
@@ -87,12 +87,14 @@ class Image {
 
 	}
 
-    public function upload() {
-        $this->rename();
-        $this->doUpload();
+	public function upload() {
+		$this->rename();
+
+		$this->doUpload();
 	}
-	
-    public function delete($photo) {
-		@unlink(path().'/public'.$photo);
-    }
+
+	public function delete($photo) {
+		@unlink(path() . '/public' . $photo);
+	}
+
 }

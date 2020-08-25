@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <style type="text/css">
+        *{
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Olá, bem vindo {{ admin().name }} - <a href="/admin/logout" class="btn btn-danger btn-xs">Logout</a></h2>
+
+        {% block admin %}{% endblock %}
+    </div>
+</body>
+</html>

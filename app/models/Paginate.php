@@ -4,51 +4,50 @@ namespace app\models;
 
 use app\traits\Links;
 
-class Paginate 
-{
-    use Links;
-    
-    private $page;
-    private $perPage;
-    private $offset;
-    private $pages;
-    private $records;
+class Paginate {
 
-    private function current() 
-    {
-        $this->page = $_GET['page'] ?? 1;
-    }
+	use Links;
 
-    private function perPage($perPage) 
-    {
-        $this->perPage = $perPage ?? 30;
-    }
+	private $page;
+	private $perPage;
+	private $offset;
+	private $pages;
+	private $records;
 
-    private function offset()
-    {
-        $this->offset = ($this->page * $this->perPage) - $this->perPage;
-    }
+	private function current() {
+		$this->page = $_GET['page'] ?? 1;
+	}
 
-    public function records($records)
-    {
-        $this->records = $records;
-    }
+	private function perPage($perPage) {
+		$this->perPage = $perPage ?? 30;
+	}
 
-    private function pages()
-    {
-        $this->pages = ceil($this->records / $this->perPage);
-    }
+	private function offset() {
+		$this->offset = ($this->page * $this->perPage) - $this->perPage;
+	}
 
-    public function sqlPaginate()
-    {
-        return " limit {$this->perPage} offset {$this->offset}";
-    }
+	public function records($records) {
+		$this->records = $records;
+	}
 
-    public function paginate($perPage) 
-    {
-        $this->current();
-        $this->perPage($perPage);
-        $this->offset();
-        $this->pages();
-    }
+	private function pages() {
+		$this->pages = ceil($this->records / $this->perPage);
+	}
+
+	public function sqlPaginate() {
+		return " limit {$this->perPage} offset {$this->offset}";
+	}
+
+	public function paginate($perPage) {
+
+		$this->current();
+
+		$this->perPage($perPage);
+
+		$this->offset();
+
+		$this->pages();
+
+	}
+
 }

@@ -17,15 +17,11 @@ abstract class Model {
 	protected $value;
 	protected $sql;
 
-	public function __construct() 
-	{
+	public function __construct() {
 		$this->connect = Connection::connect();
 	}
 
-
-
-	public function find($field, $value) 
-	{
+	public function find($field, $value) {
 		$this->field = $field;
 
 		$this->value = $value;
@@ -33,8 +29,7 @@ abstract class Model {
 		return $this;
 	}
 
-	public function destroy($field, $value) 
-	{
+	public function destroy($field, $value) {
 		$sql = "delete from {$this->table} where {$field} = :{$field}";
 		$delete = $this->connect->prepare($sql);
 		$delete->bindValue($field, $value);

@@ -2,8 +2,7 @@
 
 namespace app\models;
 
-class Posts extends Model 
-{
+class Posts extends Model {
 	protected $table = 'posts';
 
 	public function posts() {
