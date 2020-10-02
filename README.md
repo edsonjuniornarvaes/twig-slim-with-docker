@@ -1,5 +1,5 @@
 # Twig and Slim with Docker structure
-Create a solid and professional structure with these tools. With features such as data validation, complete crud, beautiful and descriptive errors, pagination, pagination search, sending emails.
+Create a solid and professional structure with these tools. Complete structure with features such as data validation, complete crud, beautiful and descriptive errors, pagination, pagination search, sending emails.
 
 
 |   :pencil2:                | Module content                                | :construction:             | Release                    | :rocket:                   |
